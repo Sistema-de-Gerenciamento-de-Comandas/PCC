@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/criar-conta.css' %}">
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Editar Dados</title>
+
+    {% block topbar %}
+    {% include "_topbar.html" %}
+    {% endblock %}
+</head>
+<body>
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card1">
+                <div class="d-flex justify-content-center form_container">
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="id_username">Nome de Usuário:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                </div>
+                                {{ form.username }}
+                            </div>
+                            {% for error in form.username.errors %}
+                                <small class="form-text text-danger">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_email">Endereço de Email:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                {{ form.email }}
+                            </div>
+                            {% for error in form.email.errors %}
+                                <small class="form-text text-danger">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_cpf">CPF:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                                </div>
+                                {{ form.cpf }}
+                            </div>
+                            {% for error in form.cpf.errors %}
+                                <small class="form-text text-danger">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_telefone">Telefone:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                {{ form.telefone }}
+                            </div>
+                            {% for error in form.telefone.errors %}
+                                <small class="form-text text-danger">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_data_nascimento">Data de Nascimento:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                                </div>
+                                {{ form.data_nascimento }}
+                            </div>
+                            <small class="form-text text-danger">Formato da data: DD/MM/AAAA.</small>
+                        </div>
+                        <input type="submit" value="Editar" class="btn login_btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer_section">
+        {% block footer %}
+        {% include "_footer.html" %}
+        {% endblock %}
+    </footer>
+
+    <script>
+        function togglePasswordVisibility(icon) {
+            var passwordInput = icon.parentNode.querySelector('input');
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.innerHTML = '<i class="fas fa-eye-slash"></i>';
+            } else {
+                passwordInput.type = "password";
+                icon.innerHTML = '<i class="fas fa-eye"></i>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Gerenciar Conta</title>
+
+    {% block topbar %}
+    {% include "_topbar.html" %}
+    {% endblock %}
+</head>
+<body>
+
+    <div class="container2">
+        <div class="table-responsive">
+            <div class="table-columns">
+                {% if usuario %}
+                    <div class="table-column">
+                        <div class="table-cell"><strong>Nome:</strong> {{ usuario.username }}</div>
+                        <div class="table-cell"><strong>CPF:</strong> {{ usuario.cpf }}</div>
+                        <div class="table-cell"><strong>E-mail:</strong> {{ usuario.email }}</div>
+                        <div class="table-cell"><strong>Telefone:</strong> {{ usuario.telefone }}</div>
+                        <div class="table-cell"><strong>Data de Nascimento:</strong> {{ usuario.data_nascimento }}</div>
+                        <div class="table-cell"><strong>Editar dados:</strong> <a class="linkamarelo" href="{% url 'editar_dados' usuario.id %}">Editar</a></div>
+                        <div class="table-cell"><strong>Excluir conta:</strong> <a class="linkamarelo" href="{% url 'confirmar_exclusao_dados' usuario.id %}">Deletar</a></div>
+                    </div>
+                {% else %}
+                    <div class="table-column">
+                        <div class="table-cell" colspan="2">Não há registros</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+<footer class="footer_section">
+    {% block footer %}
+    {% include "_footer.html" %}
+    {% endblock %}
+</footer>
+
+</body>
+</html>

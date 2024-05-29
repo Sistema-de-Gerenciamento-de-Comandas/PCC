@@ -1,0 +1,107 @@
+{% block topbar %}
+    {% include "_topbar.html"%}
+    {% endblock %}
+
+{% block content %}
+
+<div id="carrinho">
+  <table class="table" id="carrinho-table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in carrinho.itens.all %}
+        <tr data-item-id="{{ item.id }}">
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ item.nome }}</td>
+            <td>{{ item.valor }}</td>
+            <td>{{ item.descricao }}</td>
+            <td>{{ item.get_categoria_display }}</td>
+            <td><button class="btn-remove-item">Remover</button></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<script>
+    // Função para adicionar item ao carrinho
+    function adicionarItemAoCarrinho(itemID) {
+        // Enviar uma solicitação AJAX para adicionar o item ao carrinho
+        $.ajax({
+            type: 'POST',
+            url: '/adicionar_item_ao_carrinho/',
+            data: {
+                'item_id': itemID,
+                'csrfmiddlewaretoken': '{{ csrf_token }}' // Token CSRF para proteção
+            },
+            success: function(response) {
+                if (response.status === 'success') {
+                    alert('Item adicionado ao carrinho com sucesso!');
+                    // Atualizar o conteúdo do carrinho após adicionar o item
+                    atualizarConteudoDoCarrinho();
+                } else {
+                    alert('Erro ao adicionar item ao carrinho: ' + response.message);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+                alert('Erro ao adicionar item ao carrinho');
+            }
+        });
+    }
+
+    // Função para atualizar o conteúdo do carrinho
+    function atualizarConteudoDoCarrinho() {
+        // Enviar uma solicitação AJAX para buscar o conteúdo atualizado do carrinho
+        $.ajax({
+            type: 'GET',
+            url: 'update/',
+            success: function(response) {
+                // Atualizar o conteúdo do carrinho na página
+                $('#carrinho').html(response);
+            },
+            error: function(xhr, errmsg, err) {
+                alert('Erro ao atualizar o conteúdo do carrinho');
+            }
+        });
+    }
+
+    // Ao carregar a página, atualizar o conteúdo do carrinho
+    $(document).ready(function() {
+        atualizarConteudoDoCarrinho();
+    });
+</script>
+<script>
+$(document).ready(function() {
+  // Captura o clique no botão de remover item
+  $('#carrinho-table').on('click', '.btn-remove-item', function() {
+      var itemId = $(this).closest('tr').data('item-id');
+
+      // Envia solicitação AJAX para remover o item do carrinho
+      $.ajax({
+          url: '/carrinho/remover_item/',
+          method: 'POST',
+          data: {
+              'item_id': itemId,
+              'csrfmiddlewaretoken': '{{ csrf_token }}' // Adicione o token CSRF se estiver usando o Django
+          },
+          success: function(response) {
+              // Atualiza a tabela do carrinho após remover o item
+              $('#carrinho-table').html(response);
+          },
+          error: function(xhr, errmsg, err) {
+              console.log(xhr.status + ": " + xhr.responseText);
+          }
+      });
+  });
+});
+</script>
+{% endblock %}
+

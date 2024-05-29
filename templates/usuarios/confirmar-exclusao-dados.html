@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <title>Gerenciar Conta</title>
+
+    {% block topbar %}
+    {% include "_topbar.html"%}
+    {% endblock %}
+
+</head>
+<body>
+
+    <div class="container2">
+
+        <h3>Tem certeza que deseja apagar sua conta?</h3>
+    
+        <div class="table-responsive">
+            <div class="table-columns">
+                        <div class="table-column">
+                            <div class="table-cell"><strong>Nome:</strong> {{ usuario.username }}</div>
+                            <div class="table-cell"><strong>CPF:</strong> {{ usuario.cpf }}</div>
+                            <div class="table-cell"><strong>E-mail:</strong> {{ usuario.email }}</div>
+                            <div class="table-cell"><strong>Telefone:</strong> {{ usuario.telefone }}</div>
+                            <div class="table-cell"><strong>Data de Nascimento:</strong> {{ usuario.data_nascimento }}</div>
+                        </div>
+                    <div class="table-column">
+                        <div class="table-cell" colspan="2">
+                            <a class="add" href="/usuarios/gerenciar-conta/deletar-conta/{{ usuario.id }}" >Sim</a>
+
+                            
+                            <a class="add" href="/usuarios/gerenciar-conta/">Não</a></div>
+                    </div>
+            </div>
+        </div>
+    
+    </div>
+    
+        
+    </div>
+
+<footer class="footer_section">
+    {% block footer %}
+    {% include "_footer.html"%}
+    {% endblock %}
+</footer>
+
+</body>
+</html>
+
