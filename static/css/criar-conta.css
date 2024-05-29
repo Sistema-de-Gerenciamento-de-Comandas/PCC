@@ -1,0 +1,141 @@
+   	/* Coded with love by Mutiullah Samim */
+       body,
+       html {
+           margin: 0;
+           padding: 0;
+           height: 120%;
+           background: white !important;
+       }
+       .user_card {
+           height: 2fr;
+           width: 35%;
+           margin-top: auto;
+           margin-bottom: auto;
+           background: #ffbe33;
+           position: relative;
+           display: flex;
+           justify-content: center;
+           flex-direction: column;
+           padding: 10px;
+           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+           -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+           -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+           border-radius: 5px;
+
+       }
+       .brand_logo_container {
+           position: absolute;
+           height: 170px;
+           width: 170px;
+           top: -75px;
+           border-radius: 50%;
+           background: white;
+           padding: 10px;
+           text-align: center;
+       }
+       .brand_logo {
+           height: 150px;
+           width: 150px;
+           border-radius: 50%;
+           border: 2px solid white;
+       }
+       .form_container {
+           margin-top: 100px;
+       }
+       .login_btn {
+           width: 100%;
+           background: black !important;
+           color: white !important;
+       }
+       .login_btn:focus {
+           box-shadow: none !important;
+           outline: 0px !important;
+       }
+       .login_container {
+           padding: 0 2rem;
+       }
+       .input-group-text {
+           background: black !important;
+           color: white !important;
+           border: 0 !important;
+           border-radius: 0.25rem 0 0 0.25rem !important;
+       }
+       .input_user,
+       .input_pass:focus {
+           box-shadow: none !important;
+           outline: 0px !important;
+       }
+       .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+           background-color: black !important;
+       }
+
+       /* Estilizando labels */
+form p label {
+    color: #333; /* Cor do texto do label */
+}
+
+
+/* Estilizando inputs */
+form p input[type="text"],
+form p input[type="email"],
+form p input[type="number"],
+form p input[type="password"] {
+    width: 300px; /* Largura total do input */
+    height: 40px;
+    padding: 8px; /* Espaçamento interno do input */
+    margin-bottom: 10px; /* Margem inferior entre os inputs */
+    border: 1px solid #ccc; /* Borda do input */
+    border-radius: 4px; /* Borda arredondada do input */
+    box-sizing: border-box; /* Incluir borda e padding na largura total */
+}
+
+/* Estilizando botão */
+form p input[type="submit"] {
+    width: 100%; /* Largura total do botão */
+    padding: 10px; /* Espaçamento interno do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    border: none; /* Remover borda do botão */
+    border-radius: 4px; /* Borda arredondada do botão */
+    cursor: pointer; /* Mostrar cursor de mão ao passar sobre o botão */
+}
+
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+.custom-form input[type="text"],
+.custom-form input[type="email"],
+.custom-form input[type="password"],
+.custom-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.custom-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.custom-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
